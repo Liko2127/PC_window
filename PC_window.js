@@ -31,15 +31,7 @@ $(document).trigger('centre.PC_window');
 			PC_window_popup(params.html,"html");
 			return false;
 		}
-		
-		$("*[data-role='PC_window_ferme']").live("click",function() {
-			PC_window_popup_ferme();
-		});	
-		$("*[data-groupe='PC_window']").live("click",function(e) {
-			if(e.target.className == "PC_window_overlay" && params.fermeoverlay) {
-				PC_window_popup_ferme();
-			}
-		});
+	
 		$(document).bind('centre.PC_window', function() {
 			PC_window_popup_centre();
 		});
@@ -97,6 +89,16 @@ $(document).trigger('centre.PC_window');
 			}
 			
 			PC_window_popup_centre();
+			
+			$("*[data-role='PC_window_ferme'], *[data-groupe='PC_window']").die();	
+			$("*[data-role='PC_window_ferme']").click(function() {
+				PC_window_popup_ferme();
+			});	
+			$("*[data-groupe='PC_window']").click(function(e) {
+				if(e.target.className == "PC_window_overlay" && params.fermeoverlay == true) {
+					PC_window_popup_ferme();
+				}
+			});
 			
 			if(type == "html") {
 				$(".PC_window_content_in").html(quoi);
