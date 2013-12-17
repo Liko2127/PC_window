@@ -40,7 +40,7 @@ $(document).trigger('centre.PC_window');
 		});
 
 		
-		this.live("click",function() {
+		this.on("click",function() {
 			if($(this).attr("href") || $(this).attr("data-href")) {
 				if($(this).attr("data-href")) {
 					var href = $(this).attr("data-href");
@@ -90,7 +90,7 @@ $(document).trigger('centre.PC_window');
 			
 			PC_window_popup_centre();
 			
-			$("*[data-role='PC_window_ferme'], *[data-groupe='PC_window']").die();	
+			$("*[data-role='PC_window_ferme'], *[data-groupe='PC_window']").off();	
 			$("*[data-role='PC_window_ferme']").click(function() {
 				PC_window_popup_ferme();
 			});	
